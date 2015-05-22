@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Circles</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script>
+// This example creates circles on the map, representing
+// populations in North America.
+
+// First, create an object containing LatLng and population for each city.
+var citymap = {};
+citymap['6'] = {
+    center: new google.maps.LatLng(53.027914, 6.575063),
+    color: '#FF0000'
+};
+
+citymap['14'] = {
+    center: new google.maps.LatLng(53.020294, 6.575874),
+    color: '#33CC33'
+};
+
+citymap['17'] = {
+    center: new google.maps.LatLng(53.010987, 6.519629),
+    color: '#0066FF'
+};
+
+citymap['20'] = {
+    center: new google.maps.LatLng(53.012667, 6.554226),
+    color: '#0066FF'
+};
+
+citymap['25'] = {
+    center: new google.maps.LatLng(53.006508, 6.521192),
+    color: '#33CC33'
+};
+
+citymap['27'] = {
+    center: new google.maps.LatLng(53.007029, 6.544810),
+    color: '#FF0000'
+};
+
+citymap['28'] = {
+    center: new google.maps.LatLng(53.006268, 6.554569),
+    color: '#0066FF'
+};
+
+citymap['29'] = {
+    center: new google.maps.LatLng(53.007009, 6.564543),
+    color: '#33CC33'
+};
+
+citymap['33'] = {
+    center: new google.maps.LatLng(53.000344, 6.521397),
+    color: '#33CC33'
+};
+
+citymap['34'] = {
+    center: new google.maps.LatLng(52.998759, 6.531375),
+    color: '#0066FF'
+};
+
+citymap['37'] = {
+    center: new google.maps.LatLng(52.999072, 6.565885),
+    color: '#FFFF00'
+};
+
+citymap['41'] = {
+    center: new google.maps.LatLng(52.992586, 6.522152),
+    color: '#FF0000'
+};
+
+citymap['42'] = {
+    center: new google.maps.LatLng(52.992840, 6.531560),
+    color: '#33CC33'
+};
+
+citymap['44'] = {
+    center: new google.maps.LatLng(52.992336, 6.555561),
+    color: '#0066FF'
+};
+
+citymap['45'] = {
+    center: new google.maps.LatLng(52.993303, 6.565700),
+    color: '#0066FF'
+};
+
+citymap['51'] = {
+    center: new google.maps.LatLng(52.986149, 6.543104),
+    color: '#33CC33'
+};
+
+citymap['53'] = {
+    center: new google.maps.LatLng(52.986644, 6.565250),
+    color: '#0066FF'
+};
+
+citymap['58'] = {
+    center: new google.maps.LatLng(52.979345, 6.533390),
+    color: '#FF0000'
+};
+
+citymap['59'] = {
+    center: new google.maps.LatLng(52.979213, 6.542447),
+    color: '#FF0000'
+};
+
+citymap['68'] = {
+    center: new google.maps.LatLng(52.972679, 6.555088),
+    color: '#FFFF00'
+};
+
+citymap['82'] = {
+    center: new google.maps.LatLng(53.010369, 6.556704),
+    color: '#FF0000'
+};
+
+citymap['85'] = {
+    center: new google.maps.LatLng(53.003635, 6.548984),
+    color: '#FFFF00'
+};
+
+citymap['90'] = {
+    center: new google.maps.LatLng(52.996677, 6.558527),
+    color: '#FF0000'
+};
+
+citymap['93'] = {
+    center: new google.maps.LatLng(52.990939, 6.547211),
+    color: '#FFFF00'
+};
+
+citymap['98'] = {
+    center: new google.maps.LatLng(52.982282, 6.561370),
+    color: '#33CC33'
+};
+
+citymap['103'] = {
+    center: new google.maps.LatLng(52.996199, 6.537912),
+    color: '#33CC33'
+};
+
+citymap['106'] = {
+    center: new google.maps.LatLng(52.981848, 6.527994),
+    color: '#FF0000'
+};
+
+citymap['107'] = {
+    center: new google.maps.LatLng(52.984099, 6.538053),
+    color: '#0066FF'
+};
+
+citymap['108'] = {
+    center: new google.maps.LatLng(52.976642, 6.537910),
+    color: '#0066FF'
+};
+
+citymap['111'] = {
+    center: new google.maps.LatLng(53.003285, 6.513255),
+    color: '#FFFF00'
+};
+
+citymap['140'] = {
+    center: new google.maps.LatLng(52.992061, 6.512595),
+    color: '#FFFF00'
+};
+
+citymap['149'] = {
+    center: new google.maps.LatLng(53.008370, 6.584260),
+    color: '#FF0000'
+};
+
+citymap['156'] = {
+    center: new google.maps.LatLng(52.977516, 6.548337),
+    color: '#FF0000'
+};
+
+citymap['157'] = {
+    center: new google.maps.LatLng(52.970286, 6.539497),
+    color: '#33CC33'
+};
+
+citymap['158'] = {
+    center: new google.maps.LatLng(52.977463, 6.555599),
+    color: '#0066FF'
+};
+
+citymap['160'] = {
+    center: new google.maps.LatLng(52.992477, 6.570319),
+    color: '#FF0000'
+};
+
+citymap['167'] = {
+    center: new google.maps.LatLng(52.993577, 6.559665),
+    color: '#33CC33'
+};
+
+citymap['170'] = {
+    center: new google.maps.LatLng(53.000356, 6.551078),
+    color: '#FFFF00'
+};
+
+citymap['171'] = {
+    center: new google.maps.LatLng(53.017673, 6.570377),
+    color: '#FFFF00'
+};
+
+citymap['201'] = {
+    center: new google.maps.LatLng(53.003586, 6.507009),
+    color: '#0066FF'
+};
+
+citymap['202'] = {
+    center: new google.maps.LatLng(52.995402, 6.510958),
+    color: '#FFFF00'
+};
+
+citymap['203'] = {
+    center: new google.maps.LatLng(52.994616, 6.505320),
+    color: '#0066FF'
+};
+
+citymap['204'] = {
+    center: new google.maps.LatLng(52.993671, 6.499490),
+    color: '#FF0000'
+};
+
+citymap['208'] = {
+    center: new google.maps.LatLng(52.993854, 6.550711),
+    color: '#33CC33'
+};
+
+citymap['213'] = {
+    center: new google.maps.LatLng(53.000250, 6.514335),
+    color: '#0066FF'
+};
+
+citymap['220'] = {
+    center: new google.maps.LatLng(52.986064, 6.546951),
+    color: '#0066FF'
+};
+
+
+var cityCircle;
+
+function initialize() {
+  // Create the map.
+  var mapOptions = {
+    zoom: 13,
+    center: new google.maps.LatLng(52.9989785, 6.5732356),
+    mapTypeId: google.maps.MapTypeId.TERRAIN //SATELLITE ROADMAP TERRAIN
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Construct the circle for each value in citymap.
+  // Note: We scale the area of the circle based on the population.
+  for (var node in citymap) {
+    var populationOptions = {
+      strokeColor: '#FF0000',
+      strokeOpacity: 0.0,
+      strokeWeight: 2,
+      fillColor: citymap[node].color,
+      fillOpacity: 0.35,
+      map: map,
+      center: citymap[node].center,
+      radius: 250,
+    };
+    // Add the circle for this city to the map.
+    cityCircle = new google.maps.Circle(populationOptions);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -180px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=visualization"></script>
+    <script>
+// Adding 500 Data Points
+var map, pointarray;
+var heatmap = [];
+
+var nodeData = [
+  [
+  new google.maps.LatLng(53.027914, 6.575063),
+  new google.maps.LatLng(53.020294, 6.575874),
+  new google.maps.LatLng(53.010987, 6.519629),
+  new google.maps.LatLng(53.012667, 6.554226),
+  new google.maps.LatLng(53.006508, 6.521192),
+  new google.maps.LatLng(53.007029, 6.544810),
+  new google.maps.LatLng(53.006268, 6.554569),
+  new google.maps.LatLng(53.007009, 6.564543),
+  new google.maps.LatLng(53.000344, 6.521397),
+  new google.maps.LatLng(52.998759, 6.531375),
+  new google.maps.LatLng(52.999072, 6.565885)],
+  [
+  new google.maps.LatLng(52.992586, 6.522152),
+  new google.maps.LatLng(52.992840, 6.531560),
+  new google.maps.LatLng(52.992336, 6.555561),
+  new google.maps.LatLng(52.993303, 6.565700),
+  new google.maps.LatLng(52.986149, 6.543104),
+  new google.maps.LatLng(52.986644, 6.565250),
+  new google.maps.LatLng(52.979345, 6.533390),
+  new google.maps.LatLng(52.979213, 6.542447),
+  new google.maps.LatLng(52.972679, 6.555088),
+  new google.maps.LatLng(53.010369, 6.556704),
+  new google.maps.LatLng(53.003635, 6.548984),
+  new google.maps.LatLng(52.996677, 6.558527),
+  new google.maps.LatLng(52.990939, 6.547211)],
+  [
+  new google.maps.LatLng(52.982282, 6.561370),
+  new google.maps.LatLng(52.996199, 6.537912),
+  new google.maps.LatLng(52.981848, 6.527994),
+  new google.maps.LatLng(52.984099, 6.538053),
+  new google.maps.LatLng(52.976642, 6.537910),
+  new google.maps.LatLng(53.003285, 6.513255),
+  new google.maps.LatLng(52.992061, 6.512595),
+  new google.maps.LatLng(53.008370, 6.584260),
+  new google.maps.LatLng(52.977516, 6.548337),
+  new google.maps.LatLng(52.970286, 6.539497),
+  new google.maps.LatLng(52.977463, 6.555599)],
+  [
+  new google.maps.LatLng(52.992477, 6.570319),
+  new google.maps.LatLng(52.993577, 6.559665),
+  new google.maps.LatLng(53.000356, 6.551078),
+  new google.maps.LatLng(53.017673, 6.570377),
+  new google.maps.LatLng(53.003586, 6.507009),
+  new google.maps.LatLng(52.995402, 6.510958),
+  new google.maps.LatLng(52.994616, 6.505320),
+  new google.maps.LatLng(52.993671, 6.499490),
+  new google.maps.LatLng(52.993854, 6.550711),
+  new google.maps.LatLng(53.000250, 6.514335),
+  new google.maps.LatLng(52.986064, 6.546951)]
+]
+
+var gradient = [
+  ['rgba(255, 255, 255, 0)',
+  'rgba(255, 240, 240, 0.1)',
+  'rgba(255, 220, 220, 0.2)',
+  'rgba(255, 200, 200, 0.3)',
+  'rgba(255, 180, 180, 0.4)',
+  'rgba(255, 160, 160, 0.5)',
+  'rgba(255, 140, 140, 0.6)',
+  'rgba(255, 120, 120, 0.7)',
+  'rgba(255, 100, 100, 0.8)',
+  'rgba(255, 80, 80, 0.9)',
+  'rgba(255, 60, 60, 1)',
+  'rgba(255, 40, 40, 1)',
+  'rgba(255, 20, 20, 1)',
+  'rgba(255, 0, 0, 1)'],
+  ['rgba(255, 255, 255, 0)',
+  'rgba(240, 255, 240, 0.1)',
+  'rgba(220, 255, 220, 0.2)',
+  'rgba(200, 255, 200, 0.3)',
+  'rgba(180, 255, 180, 0.4)',
+  'rgba(160, 255, 160, 0.5)',
+  'rgba(140, 255, 140, 0.6)',
+  'rgba(120, 255, 120, 0.7)',
+  'rgba(100, 255, 100, 0.8)',
+  'rgba(80, 255, 80, 0.9)',
+  'rgba(60, 255, 60, 1)',
+  'rgba(40, 255, 40, 1)',
+  'rgba(20, 255, 20, 1)',
+  'rgba(0, 255, 0, 1)'],
+  ['rgba(255, 255, 255, 0)',
+  'rgba(240, 240, 255, 0.1)',
+  'rgba(220, 220, 255, 0.2)',
+  'rgba(200, 200, 255, 0.3)',
+  'rgba(180, 180, 255, 0.4)',
+  'rgba(160, 160, 255, 0.5)',
+  'rgba(140, 140, 255, 0.6)',
+  'rgba(120, 120, 255, 0.7)',
+  'rgba(100, 100, 255, 0.8)',
+  'rgba(80, 80, 255, 0.9)',
+  'rgba(60, 60, 255, 1)',
+  'rgba(40, 40, 255, 1)',
+  'rgba(20, 20, 255, 1)',
+  'rgba(0, 0, 255, 1)'],
+  ['rgba(255, 255, 255, 0)',
+  'rgba(255, 255, 240, 0.1)',
+  'rgba(255, 255, 220, 0.2)',
+  'rgba(255, 255, 200, 0.3)',
+  'rgba(255, 255, 180, 0.4)',
+  'rgba(255, 255, 160, 0.5)',
+  'rgba(255, 255, 140, 0.6)',
+  'rgba(255, 255, 120, 0.7)',
+  'rgba(255, 255, 100, 0.8)',
+  'rgba(255, 255, 80, 0.9)',
+  'rgba(255, 255, 60, 1)',
+  'rgba(255, 255, 40, 1)',
+  'rgba(255, 255, 20, 1)',
+  'rgba(255, 255, 0, 1)']
+]
+
+function initialize() {
+  //
+  // Map
+  //
+  var mapOptions = {
+    zoom: 13,
+    center: new google.maps.LatLng(52.9989785, 6.5732356),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  for (var i = 0; i < 4; i++){
+    var pointArray = new google.maps.MVCArray(nodeData[i]);
+
+    heatmap[i] = new google.maps.visualization.HeatmapLayer({
+      data: pointArray,
+      radius: 100,
+      gradient: gradient[i]
+    });
+
+    heatmap[i].setMap(map);
+  }
+
+  /*
+  //
+  // Heatmap 1
+  //
+  var pointArray1 = new google.maps.MVCArray(nodeData1);
+
+  heatmap = new google.maps.visualization.HeatmapLayer({
+    data: pointArray1
+  });
+
+  heatmap.setMap(map);
+
+  //
+  // Heatmap 2
+  //
+  var pointArray2 = new google.maps.MVCArray(nodeData2);
+
+  heatmap2 = new google.maps.visualization.HeatmapLayer({
+    data: pointArray2,
+    gradient: [
+      'rgba(255, 0, 0, 0)',
+      'rgba(255, 0, 0, 0.1)',
+      'rgba(255, 0, 0, 0.2)',
+      'rgba(255, 0, 0, 0.3)',
+      'rgba(255, 0, 0, 0.4)',
+      'rgba(255, 0, 0, 0.5)',
+      'rgba(255, 0, 0, 0.6)',
+      'rgba(255, 0, 0, 0.7)',
+      'rgba(255, 0, 0, 0.8)',
+      'rgba(255, 0, 0, 0.9)',
+      'rgba(255, 0, 0, 1)',
+      'rgba(255, 0, 0, 1)',
+      'rgba(255, 0, 0, 1)',
+      'rgba(255, 0, 0, 1)'
+    ],
+    gradient: [
+      'rgba(255, 0, 0, 0)',
+      'rgba(255, 255, 0, 0.9)',
+      'rgba(0, 255, 0, 0.7)',
+      'rgba(173, 255, 47, 0.5)',
+      'rgba(152, 251, 152, 0)',
+      'rgba(152, 251, 152, 0)',
+      'rgba(0, 0, 238, 0.5)',
+      'rgba(186, 85, 211, 0.7)',
+      'rgba(255, 0, 255, 0.9)',
+      'rgba(255, 0, 0, 1)'
+    ],
+  });
+
+  heatmap2.setMap(map);
+  */
+}
+
+function toggleHeatmap() {
+  for (var i = 0; i < 4; i++){
+    heatmap[i].setMap(heatmap[i].getMap() ? null : map);
+  }
+}
+
+function changeGradient() {
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ]
+  for (var i = 0; i < 4; i++){
+    heatmap[i].set('gradient', heatmap[i].get('gradient') ? null : gradient);
+  }
+}
+
+function changeRadius() {
+  for (var i = 0; i < 4; i++){
+    heatmap[i].set('radius', heatmap[i].get('radius') ? null : 20);
+  }
+}
+
+function changeOpacity() {
+  for (var i = 0; i < 4; i++){
+    heatmap[i].set('opacity', heatmap[i].get('opacity') ? null : 0.2);
+  }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+
+  <body>
+    <div id="panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="changeOpacity()">Change opacity</button>
+    </div>
+    <div id="map-canvas"></div>
+  </body>
+</html>
