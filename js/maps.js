@@ -109,10 +109,10 @@ function initializeAll() {
 			strokeOpacity: 0.0,
 			strokeWeight: 2,
 			fillColor: citymap[node].color,
-			fillOpacity: 0.35,
+			fillOpacity: 0.55,
 			map: map,
 			center: citymap[node].center,
-			radius: 250,
+			radius: 450,
 		};
 		// Add the circle for this city to the map.
 		cityCircle = new google.maps.Circle(populationOptions);
