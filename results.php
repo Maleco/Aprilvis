@@ -65,7 +65,7 @@
 							 <!-- Top Row -->
 							 <div class="row" style="padding-top:20px;">
 									<!-- Node Name + Info -->
-									<div class="col-md-4">
+									<div class="col-md-3">
 										 <div class="panel panel-default">
 												<div id="nodeName" class="panel-heading">
 													 <!-- Single button -->
@@ -76,20 +76,6 @@
 												</div>
 										 </div>
 									</div>
-									<!-- Node Appraisal Plot -->
-									<div class="col-md-4">
-										 <div class="panel panel-default">
-												<div id="nodeName" class="panel-heading">
-													 <!-- Select between human and system appraisal -->
-													 <div class="btn-group" role="group" aria-label="...">
-															<button type="button" class="btn btn-default">Human Appraisal</button>
-															<button type="button" class="btn btn-default">Machine Appraisal</button>
-													 </div>
-												</div>
-												<div id="nodeAppraisalPlot" class="panel-body"></div>
-										 </div>
-
-									</div> 
 									<!-- Node Google Map -->
 									<div class="col-md-4">
 										 <div class="panel panel-default">
@@ -99,14 +85,26 @@
 												</div>
 										 </div>
 									</div>
+									<!-- Node Appraisal Plot -->
+									<div class="col-md-5">
+										 <div class="panel panel-default">
+												<div id="nodeName" class="panel-heading">
+													 <!-- Select between human and system appraisal -->
+													 <div class="btn-group" data-toggle="buttons">
+															<label id="humanAppraisal" class="btn btn-primary">
+																 <input type="radio" name="options" id="option2"> Human Appraisal
+															</label>
+															<label id="machineAppraisal" class="btn btn-primary">
+																 <input type="radio" name="options" id="option3"> Machine Appraisal
+															</label>
+													 </div>
+												</div>
+												<div id="nodeAppraisalPlot" class="panel-body"></div>
+										 </div>
+
+									</div> 
 							 </div>
 							 <div class="row">
-										 <div class="panel panel-default">
-												<div class="panel-heading">Hieronder hele mooie plotjes</div>
-												<div class="panel-body">
-													 PIE-PLOT
-													 PIZZA-PLOT
-												</div>
 							 </div>
 						</div>
 				 </div>
@@ -119,7 +117,18 @@
 							 });
 
 							 initializeOne(node);
+							 $('#humanAppraisal').on('click', function (e) {
+										 document.getElementById("nodeAppraisalPlot").innerHTML = 
+										 '<img alt="Human Appraisal Plot" src="img/human_appraisals/Human_Appraisal_node' 
+										 + zeroPad(node,3) + '.png">';
+							 });
+							 $('#machineAppraisal').on('click', function (e) {
+										 document.getElementById("nodeAppraisalPlot").innerHTML = 
+										 '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_Appraisal_Density_node' + 
+										 zeroPad(node,3) + '.png">';
+							 });
 				 });
+
 			</script>
 			<script src="js/results.js"></script>
 	 </body>

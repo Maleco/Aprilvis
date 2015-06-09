@@ -31,12 +31,15 @@ function doStuff (data) {
 
 	 document.getElementById("nodeDescription").innerHTML = 
 			nodeData.description;
+
+	 // Toggle menu for the appraisals
+	 $("#humanAppraisal").button('toggle');
 	 document.getElementById("nodeAppraisalPlot").innerHTML = 
 			'<img alt="Human Appraisal Plot" src="img/human_appraisals/Human_Appraisal_node' 
 			+ zeroPad(node,3) + '.png">';
 
 	 // Create a nice dropdown menu to switch nodes 
-	 var dropdownHTML = '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
+	 var dropdownHTML = '<button type="button" class="btn btn-default btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false">' +
 			'Location ' + node + ": " + nodeData.title + '    <span class="caret"></span></button>' +
 			'<ul class="dropdown-menu" role="menu">' +
 			'<li><a href="results.php?node=' + node + '">Location ' + node + ": " + nodeData.title + '    </a></li>' +

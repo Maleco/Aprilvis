@@ -41,8 +41,7 @@ nav {
 	 height        : 100%;
 	 width         : 100%;
 	 background    : #5ed4ce;
-	 margin        : 0 auto;
-	 opacity       : 0.95;
+	 margin        : 0 ;
 
 	 border-style  : solid;
 	 border-color  : #5ed4ce;
@@ -51,6 +50,10 @@ nav {
 	 font-size     : 2em;
 	 text-align    : center;
 	 color         : black;
+}
+
+.row {
+	 padding: 0 10% ;
 }
 
 .content h1 {
@@ -68,14 +71,12 @@ nav {
 }
 
 #map-canvas {
-	 background: rgba(0,0,0,1.0);
 	 height  : 50%;
 	 width   : 50%;
 	 margin  : 0 auto;
 	 padding : 0px;
 }
 #smallmap-canvas {
-	 background: rgba(0,0,0,1.0);
 	 height  : 100%;
 	 width   : 100%;
 	 margin  : 0 auto;
@@ -95,6 +96,3 @@ nav {
 	 max-height:100%;
 }
 
-#nodeDropDown button {
-	 width: 100%;
-}
