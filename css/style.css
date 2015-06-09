@@ -1,8 +1,10 @@
 html {
 	 background: url(../img/bg3.jpg) no-repeat top;
+	 height        : 100%;
 }
 
 body {
+	 height        : 100%;
 	 background : whitesmoke;
 	 opacity       : 0.95;
 }
@@ -11,30 +13,32 @@ nav {
 	 font-size : 4em;
 }
 
-#header, #footerLink {
+#header, .footerLink {
 	 position   : fixed;
 	 width      : 100%;
 	 margin     : 0 auto;
 	 text-align : center;
 }
 
-#footerLink {
+.footerLink {
 	 bottom : 10px;
 	 color  : black;
 }
-#footerLink a {
+.footerLink a {
 	 color: black;
 }
 
 #header {
-	 height      : 120px;
+	 background  : whitesmoke;
+	 opacity     : 0.95;
+	 height      : 60px;
 	 top         : 0px;
-	 padding-top : 10px;
+	 padding-top : 5px;
 	 z-index: 9990;
 }
 
 #logo_area a, #logo_area a img {
-	 height : 100px;
+	 height : 50px;
 }
 
 .content {
@@ -46,9 +50,11 @@ nav {
 	 border-style  : solid;
 	 border-color  : #5ed4ce;
 	 border-width  : 5px;
-
-	 font-size     : 2em;
 	 text-align    : center;
+}
+
+.frontpage {
+	 font-size     : 2em;
 	 color         : black;
 }
 
@@ -57,6 +63,7 @@ nav {
 }
 
 /* anne: max breedte voor tekst en alleen headers gecentreerd: */
+.content .text,
 .content p, .content h1, .content h2, .content h3{
 	max-width: 700px;
 	margin-left: auto;
@@ -89,12 +96,15 @@ nav {
 	 padding : 0px;
 }
 #smallmap-canvas {
-	 height  : 100%;
+	 height  : 90%;
 	 width   : 100%;
 	 margin  : 0 auto;
 	 padding : 0px;
 }
 
+.panel-default {
+	 height: 550px;
+}
 .panel-body {
 	 height:450px;
 }

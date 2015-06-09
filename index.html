@@ -49,25 +49,25 @@
 		<div id="fullpage">
 			<!-- Main -->
 			<div id="main" class="section">
-				<div class="content">
+				<div class="content frontpage">
 					<h1>APRILVIS</h1>
 					<h2><i>Appraisal of Recordings In urban  Locations:</i></h2>
 					<h2><i>the Visualisation of Soundscapes</i></h2>
 					<div id="map-canvas"><div class="test"></div></div>
-					<div id="footerLink">
+					Click on a marker to see more!<br>
+					Or scroll down.
+					<div class="footerLink">
 						<a href="#aboutPage">
 							What is APRILVIS? <div class="arrow-down"></div>
 						</a>
 					</div>
-					Click on a marker to see more!<br>
-					Or scroll down.
 				</div>
 			</div>
 			<!-- Main -->
 
 			<!-- About -->
 			<div id="about" class="section">
-				<div class="content">
+				<div class="content frontpage">
 					<h1> What is Aprilvis? <h1>
 							<h1>City Soundscapes Analysis </h1>
 					<h2> Appraisal of Recordings at Interesting Locations: the Visualisation of Soundscapes. </h2>
@@ -135,7 +135,7 @@
 				$('#fullpage').fullpage({
 					anchors: ['mainPage', 'aboutPage', 'servicesPage', 'lastPage'],
 					menu: '#myMenu',
-					paddingTop: 120,
+					paddingTop: 60,
 					resize: true,
 				});
 				initializeAll();
