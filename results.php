@@ -13,7 +13,7 @@
 			<meta name="author" content="">
 
 			<title>Aprilvis</title>
-			<link rel="shortcut icon" href="img/favicon.ico">
+			<link rel="shortcut icon" href="img/logo_clear.png">
 
 
 			<!-- Custom Fonts -->
@@ -45,6 +45,8 @@
 			<!-- Bootstrap -->
 			<link rel="stylesheet" href="css/bootstrap.min.css" />
 			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<!-- Papaparse -->
+			<script type="text/javascript" src="js/jquery.csv-0.71.min.js"></script>
 
 	 </head>
 
@@ -77,8 +79,14 @@
 									<!-- Node Appraisal Plot -->
 									<div class="col-md-4">
 										 <div class="panel panel-default">
-												<div id="nodeName" class="panel-heading">Human Appraisal Plot</div>
-												<div id="nodeHumanPlot" class="panel-body"></div>
+												<div id="nodeName" class="panel-heading">
+													 <!-- Select between human and system appraisal -->
+													 <div class="btn-group" role="group" aria-label="...">
+															<button type="button" class="btn btn-default">Human Appraisal</button>
+															<button type="button" class="btn btn-default">Machine Appraisal</button>
+													 </div>
+												</div>
+												<div id="nodeAppraisalPlot" class="panel-body"></div>
 										 </div>
 
 									</div> 
@@ -93,7 +101,12 @@
 									</div>
 							 </div>
 							 <div class="row">
-									Hele Lange Stukje
+										 <div class="panel panel-default">
+												<div class="panel-heading">Hieronder hele mooie plotjes</div>
+												<div class="panel-body">
+													 PIE-PLOT
+													 PIZZA-PLOT
+												</div>
 							 </div>
 						</div>
 				 </div>
