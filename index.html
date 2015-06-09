@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Aprilvis</title>
+		<link rel="shortcut icon" href="img/logo_clear.png">
+
+		<!-- Bootstrap Core CSS -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+
+		<!-- Custom Fonts -->
+		<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+		<link href="css/stylish-portfolio.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+		<script type="text/javascript" src="js/jquery.slimscroll.min.js"></script>
+		<script src="js/maps.js"></script>
+
+	</head>
+
+	<body>
+		<div id="header">
+			<div id="logo_area">
+				<a href="#mainPage"><img alt="Brand" src="img/logo_clear.png"></a>
+			</div>
+		</div>
+
+		<div id="fullpage">
+			<!-- Main -->
+			<div id="main" class="section">
+				<div class="content">
+					<h1>APRILVIS</h1>
+					<h2><i>Appraisal of Recordings In urban  Locations:</i></h2>
+					<h2><i>the Visualisation of Soundscapes</i></h2>
+					<div id="map-canvas"></div>
+					<div id="footerLink">
+						<a href="#aboutPage">
+							What is APRILVIS? <div class="arrow-down"></div>
+						</a>
+					</div>
+					Click on a needle to see more!<br>
+					Or scroll down.
+				</div>
+			</div>
+			<!-- Main -->
+
+			<!-- About -->
+			<div id="about" class="section">
+				<div class="content">
+					<h1> What is Aprilvis? <h1>
+							<h1>City Soundscapes Analysis </h1>
+					<h2> Appraisal of Recordings at Interesting Locations: the Visualisation of Soundscapes. </h2>
+					<p>
+					Have you always wondered what the sonic environment of your city is? Our product goes beyond measuring decibels, it measures quality of sounds. 
+					</p><p>
+					In just three simple steps. 1) uploading a soundfile of at least 20 minutes. 2) let the system do the magic. 3) interpret the chart and use the data.
+					</p><p>
+					This gives you more detailed and useful information than just decibels. The sound quality is visualized in an easy chart and also shows which sound sources are present at the location.
+					For example, do you live in a quiet neighborhood with a park around the corner, or do you live downtown with a lot of cars. 
+					</p><p>
+					Our product goes beyond measuring decibels, it measures the sound quality. 
+					We don't just measure sound levels (db) we measure sound quality. 
+					</p><p>
+					We made the sound quality visible in an easy chart.  
+					</p><p>
+					Don’t just measure decibels. Measure how we like our sonic environments!
+					Do we find it lively, calm, boring or chaotic? This product knows.
+
+					<h3>City Soundscapes Analysis</h3>
+					quality of life 
+
+					People judge about their sonic environment based on four dimensions; lively, calm, boring and chaotic. 
+
+					Measuring sound quality by an appraisal on core affect. 
+
+					Core affect and appraisals
+					More than measuring decibels. 
+
+				</div>
+			</div>
+			<div id="about2" class="section">
+				<div class="content">
+					<h3>What Aprilvis can do for you (checklist of USP)</h3>
+					Automatic sound appraisal
+					Intuitive user interface
+					State of the art technology
+
+
+					<h3>About Aprilvis</h3>
+					Aprilvis was developed during the Sound Recognition course at the University of Groningen. 
+					intro stukje
+					project omschrijving
+					aprilvis is geen grapje
+
+					<h3>Applications </h3>
+					Monitoring sound quality
+					Urban planning
+					Sound disturbance control (legislation)
+
+					<h3> Contact us </h3>
+					Feel free to ask us questions → email address 
+				</div>
+			</div>
+			<!-- About -->
+
+		</div>
+		<!-- Fullpage -->
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('#fullpage').fullpage({
+					anchors: ['mainPage', 'aboutPage', 'servicesPage', 'lastPage'],
+					menu: '#myMenu',
+					paddingTop: 120,
+					resize: true,
+				});
+				initializeAll();
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,92 @@
+html {
+	background  : url(../img/bg3.jpg) no-repeat fixed;
+}
+
+body {
+	background : whitesmoke;
+	opacity    : 0.9;
+}
+
+nav {
+	font-size : 4em;
+}
+
+#header, #footerLink {
+	position   : fixed;
+	width      : 100%;
+	margin     : 0 auto;
+	text-align : center;
+	z-index    : 9990;
+}
+
+#footerLink {
+	bottom : 10px;
+	color  : black;
+}
+#footerLink a {
+	color: black;
+}
+
+#header {
+	height      : 120px;
+	top         : 0px;
+	padding-top : 10px;
+	background : whitesmoke;
+	opacity    : 0.9;
+}
+
+#logo_area a, #logo_area a img {
+	height : 100px;
+}
+
+.content {
+	height        : 100%;
+	width         : 100%;
+	background    : #5ed4ce;
+	margin        : 0 auto;
+	opacity       : 0.8;
+
+	border-style  : solid;
+	border-color  : #5ed4ce;
+	border-width  : 5px;
+	border-radius : 15px;
+
+	font-size     : 2em;
+	text-align    : center;
+	color         : black;
+}
+
+.content h1 {
+	font-size : 2em;
+	color     : black;
+}
+
+.arrow-down {
+	width        : 0;
+	height       : 0;
+	border-left  : 20px solid transparent;
+	border-right : 20px solid transparent;
+	border-top   : 20px solid #000;
+	margin       : 0 auto;
+}
+
+#map-canvas {
+	height  : 50%;
+	width   : 50%;
+	margin  : 0 auto;
+	padding : 0px;
+}
+#smallmap-canvas {
+	height  : 100%;
+	width   : 100%;
+	margin  : 0 auto;
+	padding : 0px;
+}
+
+.panel-body {
+	height:350px;
+}
+
+#nodeDropDown button {
+width: 100%;
+}
