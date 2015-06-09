@@ -30,6 +30,7 @@ nav {
 	 height      : 120px;
 	 top         : 0px;
 	 padding-top : 10px;
+	 z-index: 9990;
 }
 
 #logo_area a, #logo_area a img {
@@ -72,7 +73,6 @@ nav {
 	 width   : 50%;
 	 margin  : 0 auto;
 	 padding : 0px;
-	 z-index: 9990;
 }
 #smallmap-canvas {
 	 background: rgba(0,0,0,1.0);
