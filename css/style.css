@@ -86,12 +86,12 @@ div#process {
 }
 #process ol {
 	text-align: left;
-	max-width: 400px;
-	float:left;
 }
 
-#process ol li {
+#process .left {
 	text-align: left;
+	max-width: 400px;
+	float:left;
 }
 /* === */
 
