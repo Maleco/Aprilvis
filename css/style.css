@@ -81,7 +81,7 @@ div#process {
 #process #steps {
 	width: 296px;
 	height: 351px;
-	margin: 0 10px 10px 10px;
+	margin: 5px 10px 10px 10px;
 	float:right;
 }
 #process ol {
