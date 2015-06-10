@@ -54,7 +54,7 @@ nav {
 }
 
 .frontpage {
-	 font-size     : 2em;
+	 font-size     : 1.6em;
 	 color         : black;
 }
 
@@ -88,6 +88,10 @@ div#process {
 	text-align: left;
 	max-width: 400px;
 	float:left;
+}
+
+#proces ol li {
+	text-align: left;
 }
 /* === */
 
