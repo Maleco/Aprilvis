@@ -178,12 +178,12 @@
             $('#morningMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
                   '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
-                  zeroPad(node,3) + '_Morning.png">';
+                  + zeroPad(node,3) + '_Morning.png">';
             });
             $('#middayMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
                   '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
-                  zeroPad(node,3) + '_Afternoon.png">';
+                  + zeroPad(node,3) + '_Afternoon.png">';
             });
 
 
