@@ -110,14 +110,14 @@ div#process {
 }
 
 #map-canvas {
-	 height  : 50%;
+	 height  : 80%;
 	 width   : 50%;
 	 margin  : 0 auto;
 	 padding : 0px;
 }
 #smallmap-canvas, #smallstreetview-canvas {
-	 height  : 40%;
-	 width   : 90%;
+	 height  : 30%;
+	 width   : 95%;
 	 margin  : 0 auto;
 	 padding : 0px;
 }
@@ -125,7 +125,7 @@ div#process {
 .panel-default {
 }
 .panel-body {
-	 height:450px;
+	 height:550px;
 }
 
 #nodeAppraisalPlot {

@@ -86,6 +86,7 @@ hr.small {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+  font-size: 20px;;
 }
 
 .sidebar-nav li {

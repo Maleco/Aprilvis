@@ -57,7 +57,32 @@
       <div id="container">
          <div id="header">
             <div id="logo_area">
-               <a href="index.html"><img alt="Brand" src="img/logo_long.png"></a>
+               <a href="index.html"><img alt="Brand" src="img/logo_results.png"></a>
+
+               <!-- Navigation -->
+               <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+               <nav id="sidebar-wrapper">
+               <ul class="sidebar-nav">
+                  <li class="sidebar-brand">
+                  <a href="/#mainPage"  onclick = $("#menu-close").click(); >Main</a>
+                  </li>
+                  <li>
+                  <a href="/#aprilvisPage" onclick = $("#menu-close").click(); >Aprilvis</a>
+                  </li>
+                  <li>
+                  <a href="/#applicationPage" onclick = $("#menu-close").click(); >Application</a>
+                  </li>
+                  <li>
+                  <a href="/#aboutPage" onclick = $("#menu-close").click(); >About</a>
+                  </li>
+                  <li>
+                  <a href="/#contactPage" onclick = $("#menu-close").click(); >Contact</a>
+                  </li>
+                  <li>
+                  <a href="#" onclick = $("#menu-close").click(); >Results</a>
+                  </li>
+               </ul>
+               </nav>
             </div>
          </div>
 
@@ -89,13 +114,13 @@
                         <!-- Select between human and system appraisal -->
                         <div class="btn-group" data-toggle="buttons">
                            <label id="allMachineAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option3"> Machine Appraisal
+                              <input type="radio" name="options" id="option1"> Machine Appraisal
                            </label>
                            <label id="morningMachineAppraisal" class="btn btn-info">
                               <input type="radio" name="options" id="option2"> Morning Appraisal
                            </label>
                            <label id="middayMachineAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option2"> Midday Appraisal
+                              <input type="radio" name="options" id="option3"> Midday Appraisal
                            </label>
                         </div>
                      </div>
@@ -144,22 +169,54 @@
    <script src="js/results.js"></script>
    <script>
       $(document).ready(function() {
-            // Initialize the Google Map
-
             // Set up the Appraisal toggle buttons
-            $('#humanAppraisal').on('click', function (e) {
+            $('#allMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
-                  '<img alt="Human Appraisal Plot" src="img/human_appraisals/Human_Appraisal_node' 
+                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
                   + zeroPad(node,3) + '.png">';
             });
-            $('#machineAppraisal').on('click', function (e) {
+            $('#morningMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
-                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_Appraisal_Density_node' + 
-                  zeroPad(node,3) + '.png">';
+                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+                  zeroPad(node,3) + '_Morning.png">';
+            });
+            $('#middayMachineAppraisal').on('click', function (e) {
+                  document.getElementById("nodeAppraisalPlot").innerHTML = 
+                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+                  zeroPad(node,3) + '_Afternoon.png">';
             });
 
 
       });
+   </script>
+   <!-- Navigation bar script -->
+   <script>
+      // Closes the sidebar menu
+      $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+      });
+      // Opens the sidebar menu
+      $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+      });
+      // Scrolls to the selected menu item on the page
+      $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                  if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                        var target = $(this.hash);
+                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                        if (target.length) {
+                              $('html,body').animate({
+                                    scrollTop: target.offset().top
+                              }, 1000);
+                              return false;
+                        }
+                  }
+            });
+      });
+
    </script>
 </body>
 </html>

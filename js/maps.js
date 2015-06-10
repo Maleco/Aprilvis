@@ -95,7 +95,7 @@ var cityCircle;
 function initializeAll() {
 	// Create the map.
 	var mapOptions = {
-		zoom: 12,
+		zoom: 13,
 		center: new google.maps.LatLng(52.9989785, 6.5732356),
 		mapTypeId: google.maps.MapTypeId.TERRAIN //SATELLITE ROADMAP TERRAIN
 	};

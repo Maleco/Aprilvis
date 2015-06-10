@@ -27,9 +27,9 @@
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
@@ -41,95 +41,149 @@
 
 <body>
 <div id="header">
-	<div id="logo_area">
-		<a href="#mainPage"><img alt="Brand" src="img/logo_long.png"></a>
-	</div>
+   <div id="logo_area">
+      <a href="#mainPage"><img alt="Brand" src="img/logo_long.png"></a>
+
+      <!-- Navigation -->
+      <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+      <nav id="sidebar-wrapper">
+         <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+            <a href="#mainPage"  onclick = $("#menu-close").click(); >Main</a>
+            </li>
+            <li>
+            <a href="#aprilvisPage" onclick = $("#menu-close").click(); >Aprilvis</a>
+            </li>
+            <li>
+            <a href="#applicationPage" onclick = $("#menu-close").click(); >Application</a>
+            </li>
+            <li>
+            <a href="#aboutPage" onclick = $("#menu-close").click(); >About</a>
+            </li>
+            <li>
+            <a href="#contactPage" onclick = $("#menu-close").click(); >Contact</a>
+            </li>
+            <li>
+            <a href="/results.php?node=6" onclick = $("#menu-close").click(); >Results</a>
+            </li>
+         </ul>
+      </nav>
+   </div>
 </div>
 
 <div id="fullpage">
-	<!-- Main -->
-	<div id="main" class="section">
-		<div class="content frontpage">
-			<h2><i>The Next Generation of Sound Evaluation</i></h2>
-			<div id="map-canvas"><div class="test"></div></div>
-			Click on a marker to see results!<br>
-			<div class="footerLink">
-				<a href="#aboutPage">
-					What is APRILVIS? <div class="arrow-down"></div>
-				</a>
-			</div>
-		</div>
-	</div>
-	<!-- Main -->
+   <!-- Main -->
+   <div id="main" class="section">
+      <div class="content frontpage">
+         <h2><i>The Next Generation of Sound Evaluation</i></h2>
+         <div id="map-canvas"><div class="test"></div></div>
+         Click on a marker to see results!<br>
+         <div class="footerLink">
+            <a href="#aboutPage">
+               What is APRILVIS? <div class="arrow-down"></div>
+            </a>
+         </div>
+      </div>
+   </div>
+   <!-- Main -->
 
-	<!-- About -->
-	<div id="about" class="section">
-		<div class="content frontpage">
-			<h2>What is APRILVIS? <h2>
-					<h3><i>The next generation of sound evaluation</i></h3>
-					<p>
-					Have you always wondered how pleasant or eventful the sounds in your city are? APRILVIS can tell you just that! Our system goes beyond measuring decibels; it measures what people actually think of sounds, via something that is known as their appraisal of the sounds. This appraisal is based on two dimensions: pleasantness and eventfulness. APRILVIS is able to automatically generate and visualize these appraisals and classify them as lively, calm, boring or chaotic.
-					</p>
+   <!-- About -->
+   <div id="about" class="section">
+      <div class="content frontpage">
+         <h2>What is APRILVIS? <h2>
+               <h3><i>The next generation of sound evaluation</i></h3>
+               <p>
+               Have you always wondered how pleasant or eventful the sounds in your city are? APRILVIS can tell you just that! Our system goes beyond measuring decibels; it measures what people actually think of sounds, via something that is known as their appraisal of the sounds. This appraisal is based on two dimensions: pleasantness and eventfulness. APRILVIS is able to automatically generate and visualize these appraisals and classify them as lively, calm, boring or chaotic.
+               </p>
 
-					<p>
-					In just <b>three simple steps</b> APRILVIS can give you information about the sonic environment in your area. 
-					</p>
+               <p>
+               In just <b>three simple steps</b> APRILVIS can give you information about the sonic environment in your area. 
+               </p>
 
-					<div id="process">
-						<p><ol>
-							<li>Upload a soundfile of at least 20 minutes. </li>
-							<li>Let the system do its magic. </li>
-							<li>Interpret the results. </li>
-						</ol></p>
-						<div id="steps" style="background-color: #ff0000">testdiv to the right</div>
-					</div>
+               <div id="process">
+                  <p><ol>
+                     <li>Upload a soundfile of at least 20 minutes. </li>
+                     <li>Let the system do its magic. </li>
+                     <li>Interpret the results. </li>
+                  </ol></p>
+                  <div id="steps" style="background-color: #ff0000">testdiv to the right</div>
+               </div>
 
-				</div>
-			</div>
-			<div id="about2" class="section">
-				<div class="content frontpage">
-					<h2>Application</h2>
-					<p>It has been established that noise annoyance can have a big influence on a person’s quality of life. Research has shown that it can have serious effects on a person's health, and it can hinder people in their day-to-day life. At the moment noise annoyance is usually talked about in terms of decibels. However, high decibel levels do not necessarily have to be annoying and detrimental to health. Sometimes we appreciate loud sounds, like our favourite music or the sound of playing children. Research has shown that measuring decibels does not account for personal differences and the appraisal of sounds.</p>
-					<p>APRILVIS is able to appraise sounds like an average person would do it, to get a better understanding of the quality of these sounds. These automatically generated appraisals could be used to gain more insight in the qualitative information of sonic environments at certain places. Local governments and authorities could use this information to map the sound quality in certain areas, to find out if it’s necessary to reduce or eliminate annoying sound sources. <br /></p>
+            </div>
+         </div>
+         <div id="about2" class="section">
+            <div class="content frontpage">
+               <h2>Application</h2>
+               <p>It has been established that noise annoyance can have a big influence on a person’s quality of life. Research has shown that it can have serious effects on a person's health, and it can hinder people in their day-to-day life. At the moment noise annoyance is usually talked about in terms of decibels. However, high decibel levels do not necessarily have to be annoying and detrimental to health. Sometimes we appreciate loud sounds, like our favourite music or the sound of playing children. Research has shown that measuring decibels does not account for personal differences and the appraisal of sounds.</p>
+               <p>APRILVIS is able to appraise sounds like an average person would do it, to get a better understanding of the quality of these sounds. These automatically generated appraisals could be used to gain more insight in the qualitative information of sonic environments at certain places. Local governments and authorities could use this information to map the sound quality in certain areas, to find out if it’s necessary to reduce or eliminate annoying sound sources. <br /></p>
 
-				</div>
-			</div>
-			<div id="about3" class="section">
-				<div class="content frontpage">
-					<h2>About APRILVIS</h2>
-					<h3><i>Appraisal of Recordings In urban  Locations:<br />the Visualisation of Soundscapes</i></h3>
-					<p>APRILVIS was developed during the Sound Recognition course at the University of Groningen. It all started with ten students recorded sounds in the city of Assen. We personally experienced that some soundscapes were annoying while others were not. This inspired us to develop a system that is able to give qualitative information about a recording. Our motto: &ldquo;We need a system that works.&rdquo; </p>
+            </div>
+         </div>
+         <div id="about3" class="section">
+            <div class="content frontpage">
+               <h2>About APRILVIS</h2>
+               <h3><i>Appraisal of Recordings In urban  Locations:<br />the Visualisation of Soundscapes</i></h3>
+               <p>APRILVIS was developed during the Sound Recognition course at the University of Groningen. It all started with ten students recorded sounds in the city of Assen. We personally experienced that some soundscapes were annoying while others were not. This inspired us to develop a system that is able to give qualitative information about a recording. Our motto: &ldquo;We need a system that works.&rdquo; </p>
 
-					<p>The name stands for: Appraisal of Recording In urban Locations: the Visualisation of Soundscapes. We focused on visualizing urban soundscapes based on how humans appraise sound recordings. We categorized the appraisals of these soundscapes as lively, calm, boring or chaotic. Human appraisals are &quot;cognitive evaluations of events that are considered to be the proximal psychological determinants of emotional experience, with different combinations of appraisals corresponding to different emotions&quot;.<br />
-					<i>(Source: P. Kuppens, D. Champagne, and F. Tuerlinckx, &ldquo;The dynamic interplay between appraisal and core affect in daily life,&rdquo; Frontiers in Psychology, vol. 3, pp. 1&ndash;8, 2012.)</i><br />
-					</p>
-				</div>
-			</div>
-			<div id="about4" class="section">
-				<div class="content frontpage">
-					<h2>Contact us</h2>
-					<p>Feel free to ask us questions <a href="info@aprilvis.nl">info@aprilvis.nl</a></p>
-				</div>
-			</div>
-			<!-- About -->
+               <p>The name stands for: Appraisal of Recording In urban Locations: the Visualisation of Soundscapes. We focused on visualizing urban soundscapes based on how humans appraise sound recordings. We categorized the appraisals of these soundscapes as lively, calm, boring or chaotic. Human appraisals are &quot;cognitive evaluations of events that are considered to be the proximal psychological determinants of emotional experience, with different combinations of appraisals corresponding to different emotions&quot;.<br />
+               <i>(Source: P. Kuppens, D. Champagne, and F. Tuerlinckx, &ldquo;The dynamic interplay between appraisal and core affect in daily life,&rdquo; Frontiers in Psychology, vol. 3, pp. 1&ndash;8, 2012.)</i><br />
+               </p>
+            </div>
+         </div>
+         <div id="about4" class="section">
+            <div class="content frontpage">
+               <h2>Contact us</h2>
+               <p>Feel free to ask us questions <a href="info@aprilvis.nl">info@aprilvis.nl</a></p>
+            </div>
+         </div>
+         <!-- About -->
 
-		</div>
-		<!-- Fullpage -->
+      </div>
+      <!-- Fullpage -->
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="js/bootstrap.min.js"></script>
 
-		<script>
+      <script>
 $(document).ready(function() {
-		$('#fullpage').fullpage({
+      $('#fullpage').fullpage({
 anchors: ['mainPage', 'aprilvisPage', 'applicationPage', 'aboutPage', 'contactPage'],
 menu: '#myMenu',
 paddingTop: 60,
 resize: true,
 });
-		initializeAll();
-		});
-		</script>
-		</body>
+      initializeAll();
+      });
+      </script>
+      <!-- Navigation bar script -->
+      <script>
+// Closes the sidebar menu
+      $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+            });
+// Opens the sidebar menu
+$("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#sidebar-wrapper").toggleClass("active");
+      });
+// Scrolls to the selected menu item on the page
+$(function() {
+      $('a[href*=#]:not([href=#])').click(function() {
+         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+         var target = $(this.hash);
+         target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+         if (target.length) {
+         $('html,body').animate({
+scrollTop: target.offset().top
+}, 1000);
+         return false;
+         }
+         }
+         });
+      });
 
-		</html>
+      </script>
+      </body>
+
+      </html>

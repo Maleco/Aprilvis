@@ -49,8 +49,11 @@ $.ajax({
 function doStuff (data) {
 
    document.getElementById("nodeDescription").innerHTML = 
+      '<p><b>Location:<br></b>' +
       nodeData.description +
-      '<br><br><div id="smallmap-canvas"></div><div id="smallstreetview-canvas"></div>';
+      '</p><p><b>Date:<br> </b>Friday, March 28 2014' +
+      '</p><p><b>Time:<br> </b> 3:23 - 23 : 53' +
+      '</p><div id="smallmap-canvas"></div><div id="smallstreetview-canvas"></div>';
    initializeOne(node);
 
    // Toggle menu for the appraisals
