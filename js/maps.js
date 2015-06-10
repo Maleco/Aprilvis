@@ -122,7 +122,7 @@ function initializeAll() {
 			'<div id="siteNotice">'+
 			'</div>'+
 			'<h1 id="firstHeading" class="firstHeading">'+
-			'Locatie ' + node + ': ' + citymap[node].title +
+			'Location ' + node + ': ' + citymap[node].title +
 			'</h1>'+
 			'<div id="bodyContent">'+
 			citymap[node].description+
@@ -132,7 +132,7 @@ function initializeAll() {
 			'</div>';
 
 		var titleString =
-			'Locatie ' + node + ': ' + node.title;
+			'Location ' + node + ': ' + node.title;
 
 		var marker = new google.maps.Marker({
 			position: citymap[node].center,

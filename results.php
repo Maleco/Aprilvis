@@ -57,7 +57,7 @@
       <div id="container">
          <div id="header">
             <div id="logo_area">
-               <a href="index.html"><img alt="Brand" src="img/logo_clear.png"></a>
+               <a href="index.html"><img alt="Brand" src="img/logo_long.png"></a>
             </div>
          </div>
 
