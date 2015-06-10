@@ -81,11 +81,13 @@ div#process {
 #process #steps {
 	width: 296px;
 	height: 351px;
+	margin: 0 10px 10px 10px;
 	float:right;
 }
-ol {
+#proces ol {
 	text-align: left;
-	max-width: 500px;
+	max-width: 400px;
+	float:left;
 }
 /* === */
 
