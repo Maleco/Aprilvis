@@ -95,9 +95,9 @@ nav {
 	 margin  : 0 auto;
 	 padding : 0px;
 }
-#smallmap-canvas {
-	 height  : 50%;
-	 width   : 80%;
+#smallmap-canvas, #smallstreetview-canvas {
+	 height  : 40%;
+	 width   : 90%;
 	 margin  : 0 auto;
 	 padding : 0px;
 }
@@ -110,6 +110,10 @@ nav {
 
 #nodeAppraisalPlot {
 	 padding: 0;
+}
+
+#allMachineAppraisal {
+   margin-right: 15px;
 }
 
 .panel-body img {

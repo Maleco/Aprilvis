@@ -1,5 +1,4 @@
 // Function to add leading zeros
-
 function zeroPad(num, numZeros) {
    var n = Math.abs(num);
    var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
@@ -10,6 +9,27 @@ function zeroPad(num, numZeros) {
 
    return zeroString+n;
 }
+
+// Function to get the max value per ten
+function maxPerTen (input) {
+   var output = [];
+   for (var i = 0; i < input.length; i+=10) {
+      output.push( Math.max(
+               Number(input[i]  ) , 
+               Number(input[i+1]) , 
+               Number(input[i+2]) , 
+               Number(input[i+3]) , 
+               Number(input[i+4]) , 
+               Number(input[i+5]) , 
+               Number(input[i+6]) , 
+               Number(input[i+7]) , 
+               Number(input[i+8]) , 
+               Number(input[i+9]) ) ) ; 
+   }
+   return output;
+}
+
+// Get the node data
 var node = document.getElementById("nodeValue").innerHTML;
 var nodeData = citymap[node];
 
@@ -30,14 +50,14 @@ function doStuff (data) {
 
    document.getElementById("nodeDescription").innerHTML = 
       nodeData.description +
-      '<br><br><div id="smallmap-canvas"></div>';
+      '<br><br><div id="smallmap-canvas"></div><div id="smallstreetview-canvas"></div>';
    initializeOne(node);
 
    // Toggle menu for the appraisals
-   $("#humanAppraisal").button('toggle');
+   $("#allMachineAppraisal").button('toggle');
    document.getElementById("nodeAppraisalPlot").innerHTML = 
-      '<img alt="Human Appraisal Plot" src="img/human_appraisals/Human_Appraisal_node' 
-      + zeroPad(node,3) + '.png">';
+      '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_Appraisal_Density_node' + 
+      zeroPad(node,3) + '.png">';
 
    // Create a nice dropdown menu to switch nodes 
    var dropdownHTML = '<button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="color:white">' +
@@ -57,9 +77,7 @@ function doStuff (data) {
    document.getElementById("nodeDropDown").innerHTML = dropdownHTML;
 
    // And now the csv graphs
-
    // First gather the data
-
    // Sum the 4 quarters (proportion of the total)
    //  top left, top right, bot left, bot right
    var pleasantness = [];
@@ -96,50 +114,36 @@ function doStuff (data) {
       if (data[i][0] > 0 & data[i][1] > 0) calm++;	
    }
 
-   function averagePerSecond (input) {
-      var output = [];
-      for (var i = 0; i < input.length; i+=10) {
-         output.push( 
-               Number(input[i]  ) + 
-               Number(input[i+1]) + 
-               Number(input[i+2]) + 
-               Number(input[i+3]) + 
-               Number(input[i+4]) + 
-               Number(input[i+5]) + 
-               Number(input[i+6]) + 
-               Number(input[i+7]) + 
-               Number(input[i+8]) + 
-               Number(input[i+9]) ) ; 
-      }
-      return output;
-   }
-
-   var avgChild = []
-      //Average over the seconds
-
-//      avgFG = averagePerSecond(averagePerSecond(foreground));
-//   avgFG.unshift("Foreground");
-   avgBirds = averagePerSecond(averagePerSecond(birds));
+   //   avgFG = averagePerSecond(averagePerSecond(foreground));
+   //   avgFG.unshift("Foreground");
+   avgBirds = maxPerTen(maxPerTen(birds));
    avgBirds.unshift("Birds");
-   avgSpeech = averagePerSecond(averagePerSecond(speech));
+   avgSpeech = maxPerTen(maxPerTen(speech));
    avgSpeech.unshift("Speech");
-//   avgChild = averagePerSecond(averagePerSecond(child));
-//   avgChild.unshift("Child");
-//   avgBike = averagePerSecond(averagePerSecond(bike));
-//   avgBike.unshift("Bike");
-//   avgScooter= averagePerSecond(averagePerSecond(scooter));
-//   avgScooter.unshift("Scooter");
-   avgCar = averagePerSecond(averagePerSecond(car));
+   //   avgChild = maxPerTen(maxPerTen(child));
+   //   avgChild.unshift("Child");
+   //   avgBike = maxPerTen(maxPerTen(bike));
+   //   avgBike.unshift("Bike");
+   //   avgScooter= maxPerTen(maxPerTen(scooter));
+   //   avgScooter.unshift("Scooter");
+   avgCar = maxPerTen(maxPerTen(car));
    avgCar.unshift("Car");
-//   avgHeavy = averagePerSecond(averagePerSecond(heavy));
-//   avgHeavy.unshift("Heavy");
+   //   avgHeavy = averagePerSecond(averagePerSecond(heavy));
+   //   avgHeavy.unshift("Heavy");
 
    var chart = c3.generate({
       bindto: '#chart',
        data: {
           columns: [avgBirds, avgSpeech, avgCar]
        },
+       axis: {
+          x: {
+             label: 'Time',
+       position: 'outer-center',
+          }
+       }
    });
+   chart.axis.min(0);
 
    var chart = c3.generate({
       bindto: "#pieChart",
@@ -151,94 +155,13 @@ function doStuff (data) {
        ['Boring' , boring],
        ['Calm'   , calm],
        ],
+       colors: {
+          'Chaotic': '#dd0000',
+       'Lively' : '#dddd00',
+       'Boring' : '#0000dd',
+       'Calm'   : '#00dd00'
+       },
        type : 'pie',
        }
    });
-
-   // Now generate the pie chart
-   //	 var pie = new d3pie("pieChart", {
-   //			"header": {
-   //				 "title": {
-   //						"fontSize": 25,
-   //						"font": "open sans"
-   //				 },
-   //				 "subtitle": {
-   //						"color": "#999999",
-   //						"fontSize": 12,
-   //						"font": "open sans"
-   //				 },
-   //				 "location": "top-left",
-   //				 "titleSubtitlePadding": 9
-   //			},
-   //			"size": {
-   //				 "canvasWidth": 400,
-   //				 "pieOuterRadius": "70%"
-   //			},
-   //			"data": {
-   //				 "sortOrder": "value-asc",
-   //				 "content": [
-   //						{
-   //							 "label": "Chaotic",
-   //							 "value": chaotic,
-   //							 "color": "#ff0000"
-   //						},
-   //						{
-   //							 "label": "Calm",
-   //							 "value": calm,
-   //							 "color": "#00ff00"
-   //						},
-   //						{
-   //							 "label": "Lively",
-   //							 "value": lively,
-   //							 "color": "#ffff00"
-   //						},
-   //						{
-   //							 "label": "Boring",
-   //							 "value": boring,
-   //							 "color": "#0000ff"
-   //						}
-   //				 ]
-   //			},
-   //			"labels": {
-   //				 "outer": {
-   //						"format": "label-percentage2",
-   //						"pieDistance": 22
-   //				 },
-   //				 "inner": {
-   //						"format": "none",
-   //						"hideWhenLessThanPercentage": 3
-   //				 },
-   //				 "mainLabel": {
-   //						"fontSize": 15
-   //				 },
-   //				 "percentage": {
-   //						"color": "#ffffff",
-   //						"fontSize": 15,
-   //						"decimalPlaces": 0
-   //				 },
-   //				 "value": {
-   //						"color": "#ffffff",
-   //						"fontSize": 25
-   //				 },
-   //				 "lines": {
-   //						"enabled": true
-   //				 },
-   //				 "truncation": {
-   //						"enabled": true
-   //				 }
-   //			},
-   //			"effects": {
-   //				 "pullOutSegmentOnClick": {
-   //						"speed": 400,
-   //						"size": 10
-   //				 }
-   //			},
-   //			"misc": {
-   //				 "gradient": {
-   //						"enabled": true,
-   //						"percentage": 100
-   //				 }
-   //			}
-   //	 });
 }
-

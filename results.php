@@ -88,11 +88,14 @@
                      <div id="nodeName" class="panel-heading">
                         <!-- Select between human and system appraisal -->
                         <div class="btn-group" data-toggle="buttons">
-                           <label id="humanAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option2"> Human Appraisal
-                           </label>
-                           <label id="machineAppraisal" class="btn btn-info">
+                           <label id="allMachineAppraisal" class="btn btn-info">
                               <input type="radio" name="options" id="option3"> Machine Appraisal
+                           </label>
+                           <label id="morningMachineAppraisal" class="btn btn-info">
+                              <input type="radio" name="options" id="option2"> Morning Appraisal
+                           </label>
+                           <label id="middayMachineAppraisal" class="btn btn-info">
+                              <input type="radio" name="options" id="option2"> Midday Appraisal
                            </label>
                         </div>
                      </div>
@@ -111,7 +114,6 @@
                      </div>
                      <div class="panel-body">
                         <div id="pieChart"></div>
-                        <button onclick="changeSomething();" class="btn btn-info">Knopje</button>
                      </div>
                   </div>
                </div>
@@ -158,22 +160,6 @@
 
 
       });
-
-      function changeSomething () {
-            var chart = c3.generate({
-                  bindto: "#pieChart",
-                  data: {
-                        // iris data from R
-                        columns: [
-                        ['Chaotic', 10],
-                        ['Lively' , 10],
-                        ['Boring' , 10],
-                        ['Calm'   , 10],
-                        ],
-                        type : 'pie',
-                  }
-            });
-      }
    </script>
 </body>
 </html>

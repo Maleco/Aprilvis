@@ -126,7 +126,7 @@ function initializeAll() {
 			'</h1>'+
 			'<div id="bodyContent">'+
 			citymap[node].description+
-			'<p><a href="results.php?node=' +node+ '">'+
+			'<p style="text-align:center"><a href="results.php?node=' +node+ '">'+
 			'Results'+
 			'</a></div>'+
 			'</div>';
@@ -151,11 +151,11 @@ function initializeAll() {
 }
 
 function initializeOne(node) {
-	/*var mapOptions = {
+	var mapOptions = {
 		zoom: 15,
 		center: citymap[node].center,
 		mapTypeId: google.maps.MapTypeId.TERRAIN //SATELLITE ROADMAP TERRAIN
-	};*/
+	};
 	var panoramaOptions = {
 		position: citymap[node].center,
 		pov: {
@@ -164,14 +164,14 @@ function initializeOne(node) {
 		}
 	};
 
-	//var map = new google.maps.Map(document.getElementById('smallmap-canvas'),mapOptions);
-	//var infoWindow = new google.maps.InfoWindow();
+	var map = new google.maps.Map(document.getElementById('smallmap-canvas'),mapOptions);
+	var infoWindow = new google.maps.InfoWindow();
 
-	var panorama = new google.maps.StreetViewPanorama(document.getElementById('smallmap-canvas'));
+	var panorama = new google.maps.StreetViewPanorama(document.getElementById('smallstreetview-canvas'), panoramaOptions);
 
-	/*var marker = new google.maps.Marker({
+	var marker = new google.maps.Marker({
 		position: citymap[node].center,
 		map: map,
 		title: citymap[node].title,
-	});*/
+	});
 }
