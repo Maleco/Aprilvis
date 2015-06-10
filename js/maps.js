@@ -1,4 +1,13 @@
 var citymap = {};
+citymap['all'] = {
+	center: new google.maps.LatLng(52.993871, 6.563529),
+	color: '#FF0000',
+	title: 'All of Assen',
+	description: 'This page gives an average indication of the sound appraisal of the city Assen',
+	pleasantness: -0.326141325,
+	eventfulness: 0.161100319
+};
+
 citymap['6'] = {
 	center: new google.maps.LatLng(53.027914, 6.575063),
 	color: '#FF0000',
@@ -93,60 +102,62 @@ var cityCircle;
 
 
 function initializeAll() {
-	// Create the map.
-	var mapOptions = {
-		zoom: 13,
-		center: new google.maps.LatLng(52.9989785, 6.5732356),
-		mapTypeId: google.maps.MapTypeId.TERRAIN //SATELLITE ROADMAP TERRAIN
-	};
+   // Create the map.
+   var mapOptions = {
+      zoom: 13,
+      center: new google.maps.LatLng(52.9989785, 6.5732356),
+      mapTypeId: google.maps.MapTypeId.TERRAIN //SATELLITE ROADMAP TERRAIN
+   };
 
-	var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
-	var infoWindow = new google.maps.InfoWindow();
+   var map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
+   var infoWindow = new google.maps.InfoWindow();
 
-	for (var node in citymap) {
-		var populationOptions = {
-			strokeColor: '#FF0000',
-			strokeOpacity: 0.0,
-			strokeWeight: 2,
-			fillColor: citymap[node].color,
-			fillOpacity: 0.55,
-			map: map,
-			center: citymap[node].center,
-			radius: 450,
-		};
-		// Add the circle for this city to the map.
-		cityCircle = new google.maps.Circle(populationOptions);
+   for (var node in citymap) {
+      if (node != 'all') {
+         var populationOptions = {
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.0,
+            strokeWeight: 2,
+            fillColor: citymap[node].color,
+            fillOpacity: 0.55,
+            map: map,
+            center: citymap[node].center,
+            radius: 450,
+         };
+         // Add the circle for this city to the map.
+         cityCircle = new google.maps.Circle(populationOptions);
 
-		var contentString =
-			'<div id="content">'+
-			'<div id="siteNotice">'+
-			'</div>'+
-			'<h1 id="firstHeading" class="firstHeading">'+
-			'Location ' + node + ': ' + citymap[node].title +
-			'</h1>'+
-			'<div id="bodyContent">'+
-			citymap[node].description+
-			'<p style="text-align:center"><a href="results.php?node=' +node+ '">'+
-			'Results'+
-			'</a></div>'+
-			'</div>';
+         var contentString =
+            '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+
+            'Location ' + node + ': ' + citymap[node].title +
+            '</h1>'+
+            '<div id="bodyContent">'+
+            citymap[node].description+
+            '<p style="text-align:center"><a href="results.php?node=' +node+ '">'+
+            'Results'+
+            '</a></div>'+
+            '</div>';
 
-		var titleString =
-			'Location ' + node + ': ' + node.title;
+         var titleString =
+            'Location ' + node + ': ' + node.title;
 
-		var marker = new google.maps.Marker({
-			position: citymap[node].center,
-			map: map,
-			title: titleString,
-				//title: citymap[node].title,
-			description: contentString
-		});
+         var marker = new google.maps.Marker({
+            position: citymap[node].center,
+             map: map,
+             title: titleString,
+             //title: citymap[node].title,
+             description: contentString
+         });
 
-		google.maps.event.addListener(marker, 'click', function() {
-			infoWindow.setContent(this.description)
-				infoWindow.open( map, this );
-		});
-	}
+         google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(this.description)
+            infoWindow.open( map, this );
+         });
+      }
+   }
 
 }
 

@@ -45,7 +45,7 @@ nav {
 	 height        : 100%;
 	 width         : 100%;
 	 background    : #5ed4ce;
-	 margin        : 0 ;
+	 m/argin        : 0 ;
 
 	 border-style  : solid;
 	 border-color  : #5ed4ce;
@@ -122,7 +122,9 @@ div#process {
 	 padding : 0px;
 }
 
-.panel-default {
+.panel-heading{
+   height: 50px;
+   font-weight: bolder;
 }
 .panel-body {
 	 height:550px;
@@ -133,7 +135,6 @@ div#process {
 }
 
 #allMachineAppraisal {
-   margin-right: 15px;
 }
 
 .panel-body img {

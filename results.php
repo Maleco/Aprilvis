@@ -111,20 +111,25 @@
                <div class="col-md-4">
                   <div class="panel panel-default">
                      <div id="nodeName" class="panel-heading">
+                        System Appraisal
                         <!-- Select between human and system appraisal -->
+                     </div>
+                     <div class="panel-body">
+                        <p>
+                        The appraisal plot shows the average appraisal for this location. The colors indicate the density of the average appraisal, with darker colors indicating larger densities.</p>
+                        <div id="nodeAppraisalPlot"></div>
                         <div class="btn-group" data-toggle="buttons">
                            <label id="allMachineAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option1"> Machine Appraisal
+                              <input type="radio" name="options" id="option1"> Overall 
                            </label>
                            <label id="morningMachineAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option2"> Morning Appraisal
+                              <input type="radio" name="options" id="option2"> Morning 
                            </label>
                            <label id="middayMachineAppraisal" class="btn btn-info">
-                              <input type="radio" name="options" id="option3"> Midday Appraisal
+                              <input type="radio" name="options" id="option3"> Afternoon 
                            </label>
                         </div>
                      </div>
-                     <div id="nodeAppraisalPlot" class="panel-body"></div>
                   </div>
                </div> 
                <!-- Node Appraisal Plot -->
@@ -133,11 +138,12 @@
                <div class="col-md-4">
                   <div class="panel panel-default" style="height:auto;">
                      <div class="panel-heading">
-                        <button type="button" class="btn btn-info btn-block">
-                           Pie Chart
-                        </button>
+                           Appraisal Dimensions
                      </div>
                      <div class="panel-body">
+                        <p>
+                        These percentages represent the time that the environment was indicated as chaotic, lively, calm or boring.
+                        <br><br><br></p>
                         <div id="pieChart"></div>
                      </div>
                   </div>
@@ -151,11 +157,13 @@
                <div class="col-md-12">
                   <div class="panel panel-default">
                      <div class="panel-heading">
-                        <button type="button" class="btn btn-info btn-block">
-                           Line Graph (Features)</div>
-                     </button>
+                           Source Indication
+                        </div>
                      <div class="panel-body">
                         <div id="chart"></div>
+                        <p>
+                        This graph shows the different sources that were found in the sound recording over time. Higher scores indicate that there is a bigger chance that this source is present. You can select the different sources to see them in detail. 
+                        </p>
                      </label>
                   </div>
                </div>
@@ -172,17 +180,17 @@
             // Set up the Appraisal toggle buttons
             $('#allMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
-                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+                  '<img alt="Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
                   + zeroPad(node,3) + '.png">';
             });
             $('#morningMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
-                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+                  '<img alt="Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
                   + zeroPad(node,3) + '_Morning.png">';
             });
             $('#middayMachineAppraisal').on('click', function (e) {
                   document.getElementById("nodeAppraisalPlot").innerHTML = 
-                  '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+                  '<img alt="Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
                   + zeroPad(node,3) + '_Afternoon.png">';
             });
 

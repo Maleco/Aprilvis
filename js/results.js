@@ -1,5 +1,7 @@
 // Function to add leading zeros
 function zeroPad(num, numZeros) {
+   if (num == 'all') return num;
+
    var n = Math.abs(num);
    var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
    var zeroString = Math.pow(10,zeros).toString().substr(1);
@@ -59,14 +61,16 @@ function doStuff (data) {
    // Toggle menu for the appraisals
    $("#allMachineAppraisal").button('toggle');
    document.getElementById("nodeAppraisalPlot").innerHTML = 
-      '<img alt="Human Appraisal Plot" src="img/appraisals/ESN_Appraisal_Density_node' + 
-      zeroPad(node,3) + '.png">';
+      '<img alt="Appraisal Plot" src="img/appraisals/ESN_FullAudio_Density_node' 
+      + zeroPad(node,3) + '.png">';
 
    // Create a nice dropdown menu to switch nodes 
    var dropdownHTML = '<button type="button" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="color:white">' +
       'Location ' + node + ": " + nodeData.title + '    <span class="caret"></span></button>' +
       '<ul class="dropdown-menu" role="menu">' +
       '<li><a href="results.php?node=' + node + '">Location ' + node + ": " + nodeData.title + '    </a></li>' +
+      '<li class="divider"></li>'+
+      '<li><a href="results.php?node=all">All Locations (averaged)</a></li>' +
       '<li class="divider"></li>';
 
    for (var nod in citymap) 
@@ -167,4 +171,26 @@ function doStuff (data) {
        type : 'pie',
        }
    });
+   if (node = 'all') {
+      var chart = c3.generate({
+         bindto: "#pieChart",
+         data: {
+            // iris data from R
+            columns: [
+         ['Chaotic', 453],
+         ['Lively' , 113],
+         ['Boring' , 283],
+         ['Calm'   , 151],
+         ],
+         colors: {
+            'Chaotic': '#dd0000',
+         'Lively' : '#dddd00',
+         'Boring' : '#0000dd',
+         'Calm'   : '#00dd00'
+         },
+         type : 'pie',
+         }
+      });
+   }
+
 }
