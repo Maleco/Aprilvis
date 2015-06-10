@@ -37,8 +37,8 @@ citymap['29'] = {
 
 citymap['44'] = {
 	center: new google.maps.LatLng(52.992336, 6.555561),
-	color: '#FFFF00',
-	title: 'Princes Ireneschool, primary school',
+	color: '#33CC33',
+	title: 'Prinses Ireneschool, primary school',
 	description: 'This residential area close to the city centre and the Asserbos is sometimes crowded with children going to elementary school.',
 	pleasantness: 0.115830636,
 	eventfulness: 0.044295792
@@ -55,7 +55,7 @@ citymap['59'] = {
 
 citymap['93'] = {
 	center: new google.maps.LatLng(52.990939, 6.547211),
-	color: '#FFFF00',
+	color: '#33CC33',
 	title: 'Rode Heklaan, forest',
 	description: 'The Asserbos is a forest of 114 hectare between the city centre of Assen and the Baggelhuizen neighbourhood. A road connecting the city centre and Baggelhuizen runs straight through the forest.',
 	pleasantness: 0.0564743027,

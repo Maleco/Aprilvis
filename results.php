@@ -58,11 +58,12 @@
          <div id="header">
             <div id="logo_area">
                <a href="index.html"><img alt="Brand" src="img/logo_results.png"></a>
-
                <!-- Navigation -->
                <a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
                <nav id="sidebar-wrapper">
                <ul class="sidebar-nav">
+      '</p><p><b>Date:<br> </b>Friday, March 28 2014' +
+      '</p><p><b>Time:<br> </b> 3:23 - 23 : 53' +
                   <li class="sidebar-brand">
                   <a href="/#mainPage"  onclick = $("#menu-close").click(); >Main</a>
                   </li>
@@ -88,7 +89,6 @@
 
          <!-- Node id via URl -->
          <div style="display:none" id="nodeValue"><?php echo htmlspecialchars($_GET["node"])?></div>
-
          <!-- Main -->
          <div id="main" class="content" style="margin-top:60px">
             <!-- Top Row -->
@@ -153,13 +153,13 @@
             <!-- Top Row -->
 
             <!-- Second Row -->
-            <div class="row" style="padding-top:20px;">
+            <div id="row2" class="row" style="padding-top:20px;">
                <div class="col-md-12">
                   <div class="panel panel-default">
                      <div class="panel-heading">
                            Source Indication
                         </div>
-                     <div class="panel-body">
+                     <div class="panel-body" style="height:auto">
                         <div id="chart"></div>
                         <p>
                         This graph shows the different sources that were found in the sound recording over time. Higher scores indicate that there is a bigger chance that this source is present. You can select the different sources to see them in detail. 
@@ -176,6 +176,9 @@
 
    <script src="js/results.js"></script>
    <script>
+      var node = document.getElementById("nodeValue").innerHTML;
+      console.log(node);
+
       $(document).ready(function() {
             // Set up the Appraisal toggle buttons
             $('#allMachineAppraisal').on('click', function (e) {
@@ -194,8 +197,19 @@
                   + zeroPad(node,3) + '_Afternoon.png">';
             });
 
-
       });
+   </script>
+   <script>
+      var node = document.getElementById("nodeValue").innerHTML;
+      if (node == "29" || node == "59" || node == "93" || node == "171") {
+            console.log("hoi");
+            document.getElementById('morningMachineAppraisal').remove();
+            document.getElementById('middayMachineAppraisal').remove();
+      }
+      if (node == "all") {
+            document.getElementById('row2').remove();
+      }
+            
    </script>
    <!-- Navigation bar script -->
    <script>

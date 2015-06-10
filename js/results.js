@@ -1,6 +1,8 @@
 // Function to add leading zeros
 function zeroPad(num, numZeros) {
-   if (num == 'all') return num;
+   if (num == 'all') {
+      return num;
+   } else {
 
    var n = Math.abs(num);
    var zeros = Math.max(0, numZeros - Math.floor(n).toString().length );
@@ -10,6 +12,7 @@ function zeroPad(num, numZeros) {
    }
 
    return zeroString+n;
+   }
 }
 
 // Function to get the max value per ten
@@ -53,9 +56,7 @@ function doStuff (data) {
    document.getElementById("nodeDescription").innerHTML = 
       '<p><b>Location:<br></b>' +
       nodeData.description +
-      '</p><p><b>Date:<br> </b>Friday, March 28 2014' +
-      '</p><p><b>Time:<br> </b> 3:23 - 23 : 53' +
-      '</p><div id="smallmap-canvas"></div><div id="smallstreetview-canvas"></div>';
+      '</p><br><div id="smallmap-canvas"></div><div id="smallstreetview-canvas"></div>';
    initializeOne(node);
 
    // Toggle menu for the appraisals
@@ -75,9 +76,11 @@ function doStuff (data) {
 
    for (var nod in citymap) 
    {
-      dropdownHTML += 
-         '<li><a href="results.php?node=' + nod + '">Location ' + nod + ": " + 
-         citymap[nod].title + '    </a></li>';
+      if (nod != 'all') {
+         dropdownHTML += 
+            '<li><a href="results.php?node=' + nod + '">Location ' + nod + ": " + 
+            citymap[nod].title + '    </a></li>';
+      }
    }
 
    dropdownHTML += '</ul>';
@@ -171,7 +174,7 @@ function doStuff (data) {
        type : 'pie',
        }
    });
-   if (node = 'all') {
+   if (node == 'all') {
       var chart = c3.generate({
          bindto: "#pieChart",
          data: {
